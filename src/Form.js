@@ -53,6 +53,8 @@ const Form = () => {
 	const [values, setValues] = useState({
 		ticketOpener: '',
 		ticketSubject: '',
+		ticketCompany: '',
+		ticketEmail: '',
 		ticketUrgentLvl: '',
 		ticketFullExplanation: '',
 	});
@@ -129,12 +131,19 @@ const Form = () => {
 					id: 'c81dc653-3462-4290-9517-4acb1b3c3e3d',
 					value: `${values.ticketFullExplanation}`,
 				},
+				{
+					id: 'e015f1ba-2b28-46b1-9e20-d3606d372b09',
+					value: `${values.ticketCompany}`,
+				},
+				{
+					id: 'c4f379ac-8921-43e8-a53b-c9c9552080eb',
+					value: `${values.ticketEmail}`,
+				},
 			],
 		});
 
 		const formData = new FormData();
 
-		// formData.append('files[]', files);
 		for (let i = 0; i < files.length; i++) {
 			formData.append(files[i].name, files[i]);
 		}
@@ -172,105 +181,139 @@ const Form = () => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} encType='multipart/form-data'>
-			<label htmlFor='ticketOpener'>
-				{process.env.REACT_APP_TICKET_OPENER_LABEL}
-			</label>
-			<input
-				id='ticketOpener'
-				name='ticketOpener'
-				type='text'
-				onChange={handleChange}
-				value={values.ticketOpener}
-				placeholder={process.env.REACT_APP_TICKET_OPENER_PLACEHOLDER}
-				required
-			/>
-			<label htmlFor='ticketSubject'>
-				{process.env.REACT_APP_TICKET_SUBJECT_LABEL}
-			</label>
-			<input
-				id='ticketSubject'
-				name='ticketSubject'
-				type='text'
-				onChange={handleChange}
-				value={values.ticketSubject}
-				placeholder={process.env.REACT_APP_TICKET_SUBJECT_PLACEHOLDER}
-				required
-			/>
-			<label htmlFor='ticketUrgentLvl'>
-				{process.env.REACT_APP_TICKET_URGENTLVL_LABEL}
-			</label>
-			<select
-				name='ticketUrgentLvl'
-				value={values.ticketUrgentLvl}
-				onChange={handleChange}
-				required
-			>
-				<option value='' label='--' />
-				<option
-					value='0'
-					label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION1}
+		<>
+			<h1>טופס פתיחת קריאת שירות</h1>
+			<h3>אנא מלאו את פרטי הקריאה באופן ברור ככל הניתן</h3>
+			<form onSubmit={handleSubmit} encType='multipart/form-data'>
+				<label htmlFor='ticketOpener'>
+					{process.env.REACT_APP_TICKET_OPENER_LABEL}
+				</label>
+				<input
+					id='ticketOpener'
+					name='ticketOpener'
+					type='text'
+					onChange={handleChange}
+					value={values.ticketOpener}
+					placeholder={
+						process.env.REACT_APP_TICKET_OPENER_PLACEHOLDER
+					}
+					required
 				/>
-				<option
-					value='1'
-					label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION2}
+				<label htmlFor='ticketCompany'>
+					{process.env.REACT_APP_TICKET_COMPANY_LABEL}
+				</label>
+				<input
+					id='ticketCompany'
+					name='ticketCompany'
+					type='text'
+					onChange={handleChange}
+					value={values.ticketCompany}
+					placeholder={
+						process.env.REACT_APP_TICKET_COMPANY_PLACEHOLDER
+					}
+					required
 				/>
-				<option
-					value='2'
-					label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION3}
+				<label htmlFor='ticketEmail'>
+					{process.env.REACT_APP_TICKET_EMAIL_LABEL}
+				</label>
+				<input
+					id='ticketEmail'
+					name='ticketEmail'
+					type='text'
+					onChange={handleChange}
+					value={values.ticketEmail}
+					placeholder={process.env.REACT_APP_TICKET_EMAIL_PLACEHOLDER}
 				/>
-				<option
-					value='3'
-					label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION4}
+				<label htmlFor='ticketSubject'>
+					{process.env.REACT_APP_TICKET_SUBJECT_LABEL}
+				</label>
+				<input
+					id='ticketSubject'
+					name='ticketSubject'
+					type='text'
+					onChange={handleChange}
+					value={values.ticketSubject}
+					placeholder={
+						process.env.REACT_APP_TICKET_SUBJECT_PLACEHOLDER
+					}
+					required
 				/>
-				<option
-					value='4'
-					label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION5}
-				/>
-			</select>
-			<label htmlFor='ticketFullExplanation'>
-				{process.env.REACT_APP_TICKET_FULL_EXPLANATION_LABEL}
-			</label>
-			<input
-				id='ticketFullExplanation'
-				name='ticketFullExplanation'
-				type='text'
-				onChange={handleChange}
-				value={values.ticketFullExplanation}
-				placeholder={
-					process.env.REACT_APP_TICKET_FULL_EXPLANATION_PLACEHOLDER
-				}
-				required
-			/>
-			<div
-				{...getRootProps({
-					className: 'dropzone',
-					multiple: true,
-					style,
-				})}
-			>
-				<input {...getInputProps()} />
-				<p>{process.env.REACT_APP_FILES_UPLOAD_TEXT}</p>
-			</div>
-			<aside style={thumbsContainer}>{thumbs}</aside>
-
-			<div className='center-content'>
-				{!loader && (
-					<button type='submit' className='submit-btn'>
-						{process.env.REACT_APP_SUBMIT_BUTTON_TEXT}
-					</button>
-				)}
-
-				{loader && (
-					<Loader
-						type='Puff'
-						color='#00BFFF'
-						height={50}
-						width={50}
+				<label htmlFor='ticketUrgentLvl'>
+					{process.env.REACT_APP_TICKET_URGENTLVL_LABEL}
+				</label>
+				<select
+					name='ticketUrgentLvl'
+					value={values.ticketUrgentLvl}
+					onChange={handleChange}
+					required
+				>
+					<option value='' label='--' />
+					<option
+						value='0'
+						label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION1}
 					/>
-				)}
-			</div>
-		</form>
+					<option
+						value='1'
+						label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION2}
+					/>
+					<option
+						value='2'
+						label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION3}
+					/>
+					<option
+						value='3'
+						label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION4}
+					/>
+					<option
+						value='4'
+						label={process.env.REACT_APP_TICKET_URGENTLVL_OPTION5}
+					/>
+				</select>
+				<label htmlFor='ticketFullExplanation'>
+					{process.env.REACT_APP_TICKET_FULL_EXPLANATION_LABEL}
+				</label>
+				<input
+					id='ticketFullExplanation'
+					name='ticketFullExplanation'
+					type='text'
+					onChange={handleChange}
+					value={values.ticketFullExplanation}
+					placeholder={
+						process.env
+							.REACT_APP_TICKET_FULL_EXPLANATION_PLACEHOLDER
+					}
+					required
+				/>
+				<div
+					{...getRootProps({
+						className: 'dropzone',
+						multiple: true,
+						style,
+					})}
+				>
+					<input {...getInputProps()} />
+					<p>{process.env.REACT_APP_FILES_UPLOAD_TEXT}</p>
+				</div>
+				<aside style={thumbsContainer}>{thumbs}</aside>
+
+				<div className='center-content'>
+					{!loader && (
+						<button type='submit' className='submit-btn'>
+							{process.env.REACT_APP_SUBMIT_BUTTON_TEXT}
+						</button>
+					)}
+
+					{loader && (
+						<Loader
+							type='Puff'
+							color='#00BFFF'
+							height={50}
+							width={50}
+						/>
+					)}
+				</div>
+			</form>
+		</>
 	);
 };
 

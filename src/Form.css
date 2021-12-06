@@ -208,7 +208,8 @@ input[type="number"] {
   input[type="text"]::placeholder,
   input[type="number"]::placeholder,
   select,
-  textarea {
+  textarea,
+  textarea::placeholder {
     color: var(--gray-500);
   }
 }

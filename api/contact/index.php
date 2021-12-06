@@ -28,6 +28,14 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, "{
 		{
 			\"id\": \"" . $newPostData->custom_fields[2]->id . "\",
       \"value\": \"" . $newPostData->custom_fields[2]->value . "\"
+		},
+		{
+			\"id\": \"" . $newPostData->custom_fields[3]->id . "\",
+      \"value\": \"" . $newPostData->custom_fields[3]->value . "\"
+		},
+		{
+			\"id\": \"" . $newPostData->custom_fields[4]->id . "\",
+      \"value\": \"" . $newPostData->custom_fields[4]->value . "\"
 		}
   ]
 }");
