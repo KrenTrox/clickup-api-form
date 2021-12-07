@@ -40,9 +40,23 @@ section.form {
     align-items: center;
   }
 
+  #Layer_1 {
+    display: flex;
+    margin: 0 auto;
+    max-width: 20rem;
+  }
+
+  .st0 {
+    fill: #2d3748;
+  }
+
   @media (prefers-color-scheme: dark) {
     .dropzone {
       color: white;
+    }
+
+    .st0 {
+      fill: #fff;
     }
   }
 }

@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
+import { ReactComponent as Logo } from './images/logo.svg';
 
 const LOCAL_API_PATH = process.env.REACT_APP_LOCAL_API_PATH;
 
@@ -182,6 +183,7 @@ const Form = () => {
 
 	return (
 		<>
+			<Logo />
 			<h1>טופס פתיחת קריאת שירות</h1>
 			<h3>אנא מלאו את פרטי הקריאה באופן ברור ככל הניתן</h3>
 			<form onSubmit={handleSubmit} encType='multipart/form-data'>
